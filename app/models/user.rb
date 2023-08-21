@@ -6,5 +6,9 @@ class User < ApplicationRecord
 
   has_many :purchases
   has_many :products
-  has_attached :photo
+  has_one_attached :photo
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
