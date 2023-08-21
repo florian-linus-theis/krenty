@@ -14,3 +14,17 @@
 .nav-link {
   color: $off-white;
 }
+
+.dropdown-menu {
+  background-color: $off-white;
+  min-width: 0;
+}
+
+.dropdown-item {
+  color: $light-black;
+  text-align: left;
+}
+
+.nav-item-heart {
+  padding: 0 20px 0 0;
+}

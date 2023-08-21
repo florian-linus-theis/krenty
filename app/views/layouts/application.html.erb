@@ -11,40 +11,61 @@
   </head>
 
   <body>
-  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-    <%= image_tag "krenty-logo-zugeschnitten.png", alt: "krenty", width: 200 %>
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+      <%= image_tag "krenty-logo-zugeschnitten.png", alt: "krenty", width: 200 %>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Messages</a>
-          </li>
-          <li class="nav-item dropdown">
-            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-            </div>
-          </li>
-          <!--li class="nav-item"-->
-          <!--/li-->
-      </ul>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+            <li class="nav-item-search">
+              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass" style="color: $off-white"></i></a>
+            </li>
+            <li class="nav-item-buggy">
+            <a class="nav-link" href="#"><i class="fa-solid fa-baby-carriage" style="color: $off-white;"></i></a>
+            </li>
+            <li class="nav-item-heart">
+            <a class="nav-link" href="#"><i class="fa-solid fa-heart" style="color: $off-white;"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-baby-carriage" style="color: #171717;"></i> My ads</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart" style="color: #171717;"></i> My favorites</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-user" style="color: #171717;"></i> My profile</a>
+                <a class="dropdown-item" data-turbo-method="delete" href="#"><i class="fa-solid fa-right-from-bracket" style="color: #171717;"></i>  Log out</a>
+              </div>
+            </li>
+            <!--li class="nav-item"-->
+            <!--/li-->
+        </ul>
+      </div>
     </div>
-  </div>
-  </div>
+    </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="#"><i class="fab fa-github"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <div class="footer-copyright">
+        <i class="fa-regular fa-copyright" style="color: #fdfdfd;"></i> 2023 |
+        <%= image_tag "krenty-logo-zugeschnitten.png", alt: "krenty", width: 80 %>
+      </div>
+    </div>
+
+
+
   </body>
 </html>
