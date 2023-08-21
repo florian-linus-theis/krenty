@@ -1,1 +1,19 @@
 // Specific CSS for your home-page
+.header{
+  background-position:top center;
+  background-image: asset-url("krenty-banner");
+  height: 500px;
+  background-size: cover;
+  color: $off-white;
+  text-shadow: 2px 2px 2px #17171721;
+
+  p {
+    width: 40%;
+    font-size: 24px;
+  }
+
+  .btn {
+    color: $blue;
+    background-color: $off-white;
+  }
+}
