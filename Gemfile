@@ -57,6 +57,12 @@ gem "font-awesome-sass", "~> 6.1"
 # Using Simple Form
 gem "simple_form"
 
+# Using Env
+gem "dotenv-rails"
+
+# Using cloudinary
+gem "cloudinary"
+
 # Installing Auto-pre-fixer
 gem "autoprefixer-rails"
 
