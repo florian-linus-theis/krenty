@@ -1,7 +1,12 @@
-<h1>Welcome to Krenty!</h1>
-<h2>The online heaven for parents looking to buy and sell gently-used kids' supplies.</h2>
+<div class="d-flex header align-items-center">
+  <div class="container">
+    <h1>Welcome to Krenty.</h1>
+    <p class="my-3">The online heaven for parents looking to buy and sell gently-used kids' supplies.</p>
+ <%= link_to "Start now!", new_user_registration_path, :class => "btn my-3" %>
+  </div>
+</div>
 
-
+<div class="container my-3">
 <h2>About Krenty</h2>
 <p> We understand that parenting is a journey of growth,
     and with that comes the need for practicality and sustainability.
@@ -9,5 +14,4 @@
     it's a community where parents can come together to give new life to pre-loved items,
     while also making parenting more affordable,
     convenient, and environmentally conscious.</p>
-
-
+</div>
