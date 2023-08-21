@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :photos, presence: true
 
   # Checks if category is one of the following allowed categories
-  @allowed_categories = [
+  ALLOWED = [
     'electronics',
     'furniture',
     'books',
@@ -14,5 +14,5 @@ class Product < ApplicationRecord
     'children supplies',
     'accessories',
   ]
-  validates :category, presence: true, inclusion: { in: @allowed_catgories }
+  validates :category, presence: true, inclusion: { in: ALLOWED}
 end
