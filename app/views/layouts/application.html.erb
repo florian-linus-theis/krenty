@@ -13,7 +13,7 @@
   <body>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <div class="container-fluid">
-      <a class="navbar-brand">
+      <a class="navbar-brand" href="/">
       <%= image_tag "krenty-logo-zugeschnitten-rosa.png", alt: "krenty", width: 200 %>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,29 +27,23 @@
               <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             </li>
             <li class="nav-item-buggy">
-              <a class="nav-link" href="#"><i class="fa-solid fa-baby-carriage"></i></a>
+              <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
             </li>
             <li class="nav-item-heart">
-              <a class="nav-link" href="#"><i class="fa-solid fa-heart"></i></a>
+              <a class="nav-link" href="#"><i class="nav-dropdown-heart fa-solid fa-heart"></i></a>
             </li>
             <li class="nav-item dropdown">
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-baby-carriage" style="color: #171717;"></i> My ads</a>
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart" style="color: #171717;"></i> My favorites</a>
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-user" style="color: #171717;"></i> My profile</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket" style="color: #171717;"></i>  Log out</a>
+                <a class="dropdown-item" href="/products"><i class="fa-solid fa-baby-carriage"></i> My ads</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> My favorites</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> My profile</a>
+                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket"></i>  Log out</a>
               </div>
             </li>
           <% else %>
             <li class="nav-item-search">
               <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </li>
-            <li class="nav-item-buggy">
-              <a class="nav-link" href="/users/sign_in"><i class="fa-solid fa-baby-carriage"></i></a>
-            </li>
-            <li class="nav-item-heart-visitor">
-              <a class="nav-link" href="/users/sign_in"><i class="fa-solid fa-heart"></i></a>
             </li>
             <li class="nav-item-profile">
               <a class="nav-link" href="/users/sign_in"><i class="fa-solid fa-user"></i></a>
