@@ -1,18 +1,4 @@
-<div class="container form mb-4">
+<div class="container form my-5">
   <h2 class="my-3">Create new product:</h2>
-  <%= simple_form_for @product do |f| %>
-    <div class="form-inputs">
-      <div class="row">
-        <%= f.input :name %>
-      </div>
-      <div class="row">
-        <%= f.input :category, collection: Product::ALLOWED, include_blank: false%>
-        <%= f.input :price %>
-      </div>
-      <div class="row">
-        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-      </div>
-      <%= f.button :submit, "Create this item", class: 'btn-pink my-3'%>
-    </div>
-  <% end %>
+  <%= render "form", product: @product %>
 </div>

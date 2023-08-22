@@ -1,0 +1,22 @@
+<%= simple_form_for product do |f| %>
+  <div class="form-inputs">
+    <div class="row">
+      <%= f.input :name %>
+    </div>
+    <div class="row">
+      <div class="col">
+        <%= f.input :category, collection: Product::ALLOWED, include_blank: false%>
+      </div>
+      <div class="col">
+        <%= f.input :price %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.input :description %>
+    </div>
+    <div class="row">
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    </div>
+    <%= f.button :submit, "List this product", class: 'btn-pink my-3'%>
+  </div>
+<% end %>
