@@ -27,6 +27,15 @@ class ProductsController < ApplicationController
   end
 
   def update
+    # Cloudinary::Uploader.destroy("development/#{current_user.photo.key}")
+    # Deleting all previous photos stored in the cloud
+    if @product.photos.attached?
+      @product.photos.each { |photo| photo.purge }
+    end
+
+    # Normal crud action
+    @product.update(product_params)
+    redirect_to product_path(@product)
   end
 
   def destroy
