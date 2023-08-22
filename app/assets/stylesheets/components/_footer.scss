@@ -12,7 +12,7 @@
   align-items: center;
 }
 .footer-links a {
-  color: $off-white;
+  color: $rosa;
   opacity: 1;
   text-decoration: none;
   font-size: 24px;
@@ -21,22 +21,19 @@
 .footer-links a:hover {
   opacity: 1;
 }
-.footer .fa-heart {
-  color: #D23333;
-}
 
 .footer-copyright {
-  color: $off-white;
+  color: $rosa;
 }
 
 .footer-links {
-  color: $off-white;
+  color: $rosa;
 }
 
 #footer-logo {
   padding: 0 0 0 3px;
 }
 
-i:hover{
-  color: $rosa;
+a:hover {
+  color: $pink;
 }

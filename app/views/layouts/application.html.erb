@@ -13,8 +13,8 @@
   <body>
     <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-      <%= image_tag "krenty-logo-zugeschnitten.png", alt: "krenty", width: 200 %>
+      <a class="navbar-brand" href="/">
+      <%= image_tag "krenty-logo-zugeschnitten-rosa.png", alt: "krenty", width: 200 %>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,24 +22,33 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
+         <% if user_signed_in? %>
             <li class="nav-item-search">
-              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass" style="color: $off-white"></i></a>
+              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
             </li>
             <li class="nav-item-buggy">
-            <a class="nav-link" href="#"><i class="fa-solid fa-baby-carriage" style="color: $off-white;"></i></a>
+              <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
             </li>
             <li class="nav-item-heart">
-            <a class="nav-link" href="#"><i class="fa-solid fa-heart" style="color: $off-white;"></i></a>
+              <a class="nav-link" href="#"><i class="nav-dropdown-heart fa-solid fa-heart"></i></a>
             </li>
             <li class="nav-item dropdown">
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-baby-carriage" style="color: #171717;"></i> My ads</a>
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart" style="color: #171717;"></i> My favorites</a>
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-user" style="color: #171717;"></i> My profile</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="#"><i class="fa-solid fa-right-from-bracket" style="color: #171717;"></i>  Log out</a>
+                <a class="dropdown-item" href="/products"><i class="fa-solid fa-baby-carriage"></i> My ads</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> My favorites</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> My profile</a>
+                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket"></i>  Log out</a>
               </div>
             </li>
+          <% else %>
+            <li class="nav-item-search">
+              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </li>
+            <li class="nav-item-profile">
+              <a class="nav-link" href="/users/sign_in"><i class="fa-solid fa-user"></i></a>
+            </li>
+          <% end %>
             <!--li class="nav-item"-->
             <!--/li-->
         </ul>
@@ -47,20 +56,20 @@
     </div>
     </div>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <%= render "shared/flashes" %>
+
     <%= yield %>
 
     <div class="footer">
       <div class="footer-links">
-        <a href="#"><i class="fab fa-github"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/lewagon"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/lewagongermany/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/lewagongermany/"><i class="fab fa-facebook"></i></a>
+        <a href="https://de.linkedin.com/showcase/le-wagon-germany/"><i class="fab fa-linkedin"></i></a>
       </div>
       <div class="footer-copyright">
-        <i class="fa-regular fa-copyright" style="color: #fdfdfd;"></i> 2023 |
-        <img id="footer-logo" alt="krenty" width="70" src="/assets/krenty-logo-zugeschnitten-8cc5ea5d84e03ba6834d7e07a5128ec86819a69c029f625009c76e236735d066.png">
+        <i class="fa-regular fa-copyright" style="color: #F9E3E4;"></i> <strong>2023 |</strong>
+        <img id="footer-logo" alt="krenty" width="70" src="/assets/krenty-logo-zugeschnitten-rosa.png">
       </div>
     </div>
 

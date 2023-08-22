@@ -1,0 +1,25 @@
+.btn-pink {
+  color: $off-white;
+  background-color: $pink;
+  text-decoration: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  &:hover {
+    background-color: $lila;
+    color: $off-white;
+  }
+}
+
+.btn-rosa {
+  color: $light-black;
+  background-color: $rosa;
+  text-decoration: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+  &:hover {
+    background-color: $lila;
+    color: $off-white;
+  }
+}
