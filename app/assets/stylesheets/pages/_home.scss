@@ -4,8 +4,8 @@
   background-image: asset-url("krenty-banner");
   height: 500px;
   background-size: cover;
-  color: $off-white;
-  text-shadow: 2px 2px 2px #17171721;
+  color: $lila;
+  margin-top: -18px;
 
   p {
     width: 40%;
@@ -13,7 +13,14 @@
   }
 
   .btn {
-    color: $blue;
-    background-color: $off-white;
+    color: $off-white;
+    background-color: $pink;
   }
+}
+
+.about {
+  width: 50%;
+  text-align: center;
+  margin-top: 100px ;
+  margin-bottom: 100px ;
 }
