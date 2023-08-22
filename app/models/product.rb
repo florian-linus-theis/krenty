@@ -2,6 +2,7 @@ class Product < ApplicationRecord
   belongs_to :user
   has_many_attached :photos
   validates :price, presence: true
+  validates :description, presence: true
   validates :name, presence: true
   validates :photos, presence: true
 
@@ -14,5 +15,5 @@ class Product < ApplicationRecord
     'children supplies',
     'accessories',
   ]
-  validates :category, presence: true, inclusion: { in: ALLOWED}
+  validates :category, presence: true, inclusion: { in: ALLOWED }
 end
