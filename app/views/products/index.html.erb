@@ -1,3 +1,32 @@
+<h1 class="text-center">Products</h1>
+<%# <div class="container mt-3">
+  <ul class="card-trip">
+  <% @products.each do |product| %>
+    <%# <li><%= product.name %>
+  <%# <% end %>
+<%# </ul>
+</div>  %>
 
-<h1> Products </h1>
 
+
+<div class="card-trip">
+  <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+    <% @products.each do |product| %>
+      <div class="col">
+        <div class="card">
+          <div class="card-img-top">
+            <% product.photos.each do |photo| %>
+              <%= cl_image_tag photo.key %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h2 class="card-title"><%= product.name %></h2>
+            <p class="card-text">Short description here!</p>
+            <h2 class="card-trip-pricing"><%= product.price %>€</h2>
+            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
