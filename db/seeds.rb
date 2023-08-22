@@ -6,9 +6,9 @@ Product.destroy_all
 puts 'deleting all pruchases from DB...'
 Purchase.destroy_all
 
-puts 'Creating 10 new products...'
+puts 'Creating 5 new products...'
 
-10.times do
+5.times do
   product = Product.new(
     name: Faker::Commerce.product_name,
     price: Faker::Commerce.price,
@@ -26,6 +26,7 @@ puts 'Creating 10 new products...'
     filename: 'kinderwagen 2',
     content_type: 'image/jpg'
   )
+  product.save
 end
 
 puts 'finished'
