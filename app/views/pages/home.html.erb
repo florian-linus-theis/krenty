@@ -3,11 +3,18 @@
   <div class="container">
     <h1>Welcome to Krenty.</h1>
     <p class="my-3">The online heaven for parents looking to buy and sell gently-used kids' supplies.</p>
- <%= link_to "Start now!", new_user_registration_path, :class => "btn my-3" %>
+
+    <%# Here button dependent on user signed in or not %>
+    <% if current_user %>
+      <%= link_to "See Products!", products_path, class: "btn my-3" %>
+    <% else %>
+      <%= link_to "Start now!", new_user_registration_path, class: "btn my-3" %>
+    <% end %>
+
   </div>
 </div>
 
-<div class=" about container">
+<div class="about container">
 <h2>About Krenty</h2>
 <p> We understand that parenting is a journey of growth,
     and with that comes the need for practicality and sustainability.
