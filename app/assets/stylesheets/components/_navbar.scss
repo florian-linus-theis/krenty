@@ -11,20 +11,31 @@
   width: 90px;
 }
 
+.container-fluid{
+  padding: 0 30px;
+}
+
 .nav-link {
   color: $rosa;
 }
 
 .dropdown-menu {
-  background-color: $off-white;
+  background-color: $rosa;
   min-width: 0;
 }
 
 .dropdown-item {
   color: $light-black;
   text-align: left;
+  color: $lila;
 }
 
-.nav-item-heart {
-  padding: 0 20px 0 0;
+.dropdown-item i {
+  font-size: 13px;
+  margin: 0 5px 0 0;
+  color: $lila;
+}
+
+.nav-dropdown-heart {
+  padding: 0 15px 0 0;
 }
