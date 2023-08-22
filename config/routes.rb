@@ -4,7 +4,8 @@ Rails.application.routes.draw do
 
   # Root
   root to: 'pages#home'
+  get '/profile', to: 'pages#profile', as: :profile
 
-  # Created all 7 CRUD routes
+  # Created all 7 CRUD routes for products
   resources :products
 end
