@@ -63,6 +63,9 @@ gem "dotenv-rails"
 # Using cloudinary
 gem "cloudinary"
 
+# Using Faker Gem
+gem 'faker'
+
 # Installing Auto-pre-fixer
 gem "autoprefixer-rails"
 
