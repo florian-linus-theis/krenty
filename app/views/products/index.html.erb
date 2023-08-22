@@ -1,32 +1,39 @@
-<h1 class="text-center">Products</h1>
-<%# <div class="container mt-3">
-  <ul class="card-trip">
-  <% @products.each do |product| %>
-    <%# <li><%= product.name %>
-  <%# <% end %>
-<%# </ul>
-</div>  %>
+<h1 class="text-center mt-5 mb-4">Products</h1>
 
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end m-4">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
-
-<div class="card-trip">
+<div class="card-trip m-4">
   <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
     <% @products.each do |product| %>
       <div class="col">
         <div class="card">
           <div class="card-img-top">
             <% product.photos.each do |photo| %>
-              <%= cl_image_tag photo.key %>
+              <img src="<%= photo.url %>" class="card-img">
+              <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i>  <!-- If we decide to make a bookmark on click, will be used this '<i class="fa-solid fa-heart"></i>' -->
             <% end %>
           </div>
-          <div class="card-body">
-            <h2 class="card-title"><%= product.name %></h2>
-            <p class="card-text">Short description here!</p>
-            <h2 class="card-trip-pricing"><%= product.price %>€</h2>
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+          <div class="card-body mb-2">
+            <h2 class="card-title mb-2"><%= product.name %></h2>
+            <p class="card-text mb-2"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
+            <h2 class="card-trip-pricing mb-2"><%= product.price %>€</h2>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<%# <%= cl_image_tag photo.key, class: ' card-img' %> %>
