@@ -1,7 +1,6 @@
 .card-trip {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background: $off-white;
 }
 
 .card-trip > img {
@@ -36,4 +35,43 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+.card{
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 310px;
+}
+
+.card-img-top {
+  height: 160px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  // object-position: inherit;
+  max-width: 100%;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-img-top {
+  position: relative;
+
+  .fa-regular.fa-heart {
+    color: $lila;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+  }
 }

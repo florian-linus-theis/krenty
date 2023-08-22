@@ -3,5 +3,6 @@
   <%= f.input :category, collection: Product::ALLOWED, include_blank: false%>
   <%= f.input :price %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.input :description %>
   <%= f.submit %>
 <% end %>
