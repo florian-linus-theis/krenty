@@ -24,14 +24,14 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    # A user can only edit a product if he/she is the creator
+    render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
   end
 
   def update
     # Cloudinary::Uploader.destroy("development/#{current_user.photo.key}")
     # Deleting all previous photos stored in the cloud
-    if @product.photos.attached?
-      @product.photos.each { |photo| photo.purge }
-    end
+    @product.photos.each(&:purge) if @product.photos.attached?
 
     # Normal crud action
     @product.update(product_params)
@@ -39,6 +39,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    # A user can only destroy a product if he/she is the creator
+    render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
   end
 
   private
