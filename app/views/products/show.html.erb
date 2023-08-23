@@ -36,7 +36,11 @@
         <h1><%= @product.name %></h1>
           <h2><%= @product.category %></h2>
             <div class="d-flex mb-3 justify-contend-end">
-              <%= cl_image_tag @product.user.photo.key, height: 30, width: 30, crop: :fill, class: "me-1 rounded-circle"%>
+              <% if @product.user.photo.attached? %>
+                <%= cl_image_tag @product.user.photo.key, height: 30, width: 30, crop: :fill, class: "me-1 rounded-circle"%>
+              <% else %>
+                <%= image_tag "default_user_profile_pic.jpg", alt: "default image", width: 30, height: 30, class: "me-1 rounded-circle" %>
+              <% end %>
               <p class="pink-p"><%= @product.user.username %></p>
             </div>
           <p><%= @product.description %></p>
