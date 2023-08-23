@@ -12,8 +12,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
-  before_update :delete_old_photo
-  before_destroy :delete_old_photo
+  # before_update :delete_old_photo
+  # before_destroy :delete_old_photo
 
   private
 

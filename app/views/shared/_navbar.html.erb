@@ -22,9 +22,9 @@
             <li class="nav-item dropdown">
               <div class="d-flex full-width align-items-center dropdown-toggle" id="navbarDropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
                 <% if current_user.photo.attached? %>
-                  <img class="avatar" src="<%= cl_image_path current_user.photo.key%>">
+                  <%= cl_image_tag current_user.photo.key, class: "rounded-circle mr-3", :gravity=>"face", :height=>40, :width=>40, :crop=>"thumb" %>
                 <% else %>
-                  <img class="rounded-circle mr-3" style="width:90px; height:90px;" src="/app/assets/images/default_user_profile_pic.jpg" alt="default profile picture user">                 
+                  <%= image_tag "default_user_profile_pic.jpg", alt: "default image", width: 40, height: 40, class: "rounded-circle mr-3" %>
                 <% end %>
               </div>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
