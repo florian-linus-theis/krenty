@@ -8,5 +8,5 @@ Rails.application.routes.draw do
 
   # Created all 7 CRUD routes for products
   resources :products
-  get 'products/my', to: 'products#my_products'
+  get '/my-products', to: 'products#my_products'
 end
