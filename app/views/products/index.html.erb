@@ -20,7 +20,7 @@
       <div class="col">
         <a href="<%= product_path(product[:id]) %>">
           <div class="card">
-            <div class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel slide" id="carousel<%= product.id %>">
               <div class="carousel-inner">
                 <% product.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
@@ -49,3 +49,16 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const carouselControlButtons = document.querySelectorAll(".carousel-control-prev, .carousel-control-next");
+
+    carouselControlButtons.forEach(button => {
+      button.addEventListener("click", function(event) {
+        event.stopPropagation();
+      });
+    });
+  });
+</script>
+
