@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    return unless params[:query]
+
+    @products = Product.where('name LIKE ?', "%#{params[:query]}%")
   end
 
   def show

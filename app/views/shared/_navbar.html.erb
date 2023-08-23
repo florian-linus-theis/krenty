@@ -10,8 +10,12 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto">
          <% if user_signed_in? %>
-            <li class="nav-item-search">
-              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <li class="nav-item-search" data-controller="searchbar">
+              <form class="d-flex d-none transition-form" action="/products" method="get" data-searchbar-target="togglableElement">
+                <input class="form-control me-2" type="search" placeholder="Search" name="query" aria-label="Search">
+                <button class="astext"type="submit"><a class="nav-link nav-item-search" href="#"><i class="fa-solid fa-magnifying-glass"></i></a></button>
+              </form>
+              <a class="nav-link nav-item-search" data-action="click->searchbar#toggle" data-searchbar-target="originalLink"><i class="fa-solid fa-magnifying-glass"></i></a>
             </li>
             <li class="nav-item-buggy">
               <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
