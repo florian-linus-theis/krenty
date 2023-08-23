@@ -38,6 +38,10 @@ class ProductsController < ApplicationController
     redirect_to product_path(@product)
   end
 
+  def my_products
+    @products = current_user.products
+  end
+
   def destroy
     # A user can only destroy a product if he/she is the creator
     render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
