@@ -1,5 +1,10 @@
 require 'faker'
 
+puts 'deleting all product photos...'
+Product.all.each do |product|
+  product.photos.each(&:purge) if product.photos.attached?
+end
+
 puts 'deleting all products from DB...'
 Product.destroy_all
 
