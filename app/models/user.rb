@@ -11,4 +11,14 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  before_update :delete_old_photo
+  before_destroy :delete_old_photo
+
+  private
+
+  def delete_old_photo
+    self.photo.purge if self.photo.attached?
+  end
+
 end
