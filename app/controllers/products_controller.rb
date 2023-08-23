@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   end
 
   def my_products
+    render file: 'public/401.html', status: :unauthorized unless current_user
     @products = current_user.products
   end
 
