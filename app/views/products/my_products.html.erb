@@ -16,7 +16,7 @@
               </div>
           <% end %>
         </div>
-    <% elsif current_user %>
+    <% elsif current_user && @products.empty?%>
       <h2>Seems like you have no products yet!</h2>
       <%= link_to "Create your first product!", new_product_path, class: "btn-pink" %>
     <% else %>
