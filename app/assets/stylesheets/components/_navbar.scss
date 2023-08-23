@@ -55,3 +55,8 @@
 .nav-item-heart a:hover {
   color: $pink;
 }
+
+.transition-form {
+  transition: 0.5s ease-in;
+  left: 0;
+}
