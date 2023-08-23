@@ -6,6 +6,7 @@
   background-size: cover;
   color: $lila;
   margin-top: -18px;
+  overflow-x: hidden;
 
   p {
     width: 40%;
@@ -23,4 +24,26 @@
   text-align: center;
   margin-top: 100px ;
   margin-bottom: 100px ;
+}
+
+.custom-shape-divider-bottom-1692718690 {
+  position: relative;
+  bottom: 107px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1692718690 svg {
+  position: relative;
+  display: block;
+  width: calc(140% + 1.3px);
+  height: 107px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-bottom-1692718690 .shape-fill {
+  fill: #FDFDFD;
 }
