@@ -7,7 +7,10 @@
       <% if current_user %>
         <%= link_to "See Products!", products_path, class: "btn my-3" %>
       <% else %>
-        <%= link_to "Start now!", new_user_registration_path, class: "btn my-3" %>
+        <div class="my-3">
+          <%= link_to "Register!", new_user_registration_path, class: "btn" %>
+          <%= link_to "See all Products!", products_path, class: "btn bright", id:"bright" %>
+        </div>
       <% end %>
     </div>
   </div>

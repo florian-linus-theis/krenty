@@ -16,8 +16,18 @@
   .btn {
     color: $off-white;
     background-color: $pink;
+    transition: 0.3s ease;
+    &:hover {
+      background-color: $lila;
+    }
+  }
+
+  .bright {
+    color: $off-white;
+    background-color: #fa3a7a83;
   }
 }
+
 
 .about {
   width: 50%;
@@ -28,7 +38,7 @@
 
 .custom-shape-divider-bottom-1692718690 {
   position: relative;
-  bottom: 107px;
+  bottom: 106px;
   left: 0;
   width: 100%;
   overflow: hidden;
