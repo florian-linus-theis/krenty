@@ -52,8 +52,17 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    # A user can only destroy a product if he/she is the creator
-    render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
+    # A user can only destroy a product if he/she is the creator and is logged-in
+    if !current_user
+      render file: 'public/401.html', status: :unauthorized
+      return
+    elsif @product.user != current_user
+      flash.now[:error] = 'You are not the owner of this product'
+      return
+    end
+    @product.photos.each(&:purge) if @product.photos.attached?
+    @product.destroy
+    redirect_to my_products_path
   end
 
   private
