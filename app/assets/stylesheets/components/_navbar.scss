@@ -39,3 +39,19 @@
 .nav-dropdown-heart {
   padding: 0 15px 0 0;
 }
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.nav-item-search a:hover  {
+    color: $pink;
+}
+
+.nav-item-buggy a:hover {
+  color: $pink;
+}
+
+.nav-item-heart a:hover {
+  color: $pink;
+}
