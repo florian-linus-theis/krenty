@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   # Using Devise
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   # Root
   root to: 'pages#home'
