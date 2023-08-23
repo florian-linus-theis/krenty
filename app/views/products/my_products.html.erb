@@ -1,26 +1,27 @@
-
+<div class="container my-5">
   <h1 class="my-3">My Products</h1>
-    <% if current_user && @products %>
-        <div class="row row-cols-2 m-4">
-          <% @products.each do |product| %>
-            <div class="col">
-                <div class="card-show ">
-                  <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
-                  <div class="card-body">
-                    <h5 class="card-title"><%= product.name %></h5>
-                    <p class="card-text"><%= product.description %></p>
-                    <p class="card-text"><small class="text-muted"><%= product.category %></small></p>
-                    <p class="card-text"><small class="pink-p"><%= product.price %></small></p>
-                  </div>
+  <% if current_user && @products.empty?%>
+    <h2 class="my-4">Seems like you have no products yet!</h2>
+    <%= link_to "Create your first product!", new_product_path, class: "btn-pink" %>
+  <% elsif current_user && @products %>
+      <div class="row row-cols-2 m-4">
+        <% @products.each do |product| %>
+          <div class="col">
+              <div class="card-show ">
+                <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text"><%= product.description %></p>
+                  <p class="card-text"><small class="text-muted"><%= product.category %></small></p>
+                  <p class="card-text"><small class="pink-p"><%= product.price %></small></p>
                 </div>
               </div>
-          <% end %>
-        </div>
-    <% elsif current_user && @products.empty?%>
-      <h2>Seems like you have no products yet!</h2>
-      <%= link_to "Create your first product!", new_product_path, class: "btn-pink" %>
-    <% else %>
-      <h2>You are not logged in. Please log in or register to see and create your own products!</h2>
-      <%= link_to "Registration", new_user_session_path, class: "btn-pink" %>
-      <%= link_to "Login", new_product_path, class: "btn-rosa" %>
-    <% end %>
+            </div>
+        <% end %>
+      </div>
+  <% else %>
+    <h2>You are not logged in. Please log in or register to see and create your own products!</h2>
+    <%= link_to "Registration", new_user_session_path, class: "btn-pink" %>
+    <%= link_to "Login", new_product_path, class: "btn-rosa" %>
+  <% end %>
+</div>
