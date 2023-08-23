@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   toggle() {
-    this.originalLinkTarget.remove();
+    this.originalLinkTarget.classList.add("d-none");
     this.togglableElementTarget.classList.remove("d-none");
   }
 }
