@@ -11,76 +11,13 @@
   </head>
 
   <body>
-    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">
-      <%= image_tag "krenty-logo-zugeschnitten-rosa.png", alt: "krenty", width: 200 %>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto">
-         <% if user_signed_in? %>
-            <li class="nav-item-search">
-              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </li>
-            <li class="nav-item-buggy">
-              <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
-            </li>
-            <li class="nav-item-heart">
-              <a class="nav-link" href="#"><i class="nav-dropdown-heart fa-solid fa-heart"></i></a>
-            </li>
-            <li class="nav-item dropdown">
-                <% if current_user.photo.attached? %>
-                  <div class="mt-2 d-flex full-width align-items-center">
-                    <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown"
-                      aria-haspopup="true" aria-expanded="false" src=<%= cl_image_path current_user.photo.key%>>
-                  </div>
-                <% else %>
-                  <div class="mt-2 d-flex full-width align-items-center">
-                        <img class="rounded-circle mr-3" style="width:90px; height:90px;" src="/app/assets/images/default_user_profile_pic.jpg" alt="default profile picture user">
-                  </div>                  
-                <% end %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/products"><i class="fa-solid fa-baby-carriage"></i> My ads</a>
-                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> My favorites</a>
-                <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user"></i> My profile</a>
-                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket"></i>  Log out</a>
-              </div>
-            </li>
-          <% else %>
-            <li class="nav-item-search">
-              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
-            </li>
-            <li class="nav-item-profile">
-              <a class="nav-link" href="/users/sign_in"><i class="fa-solid fa-user"></i></a>
-            </li>
-          <% end %>
-            <!--li class="nav-item"-->
-            <!--/li-->
-        </ul>
-      </div>
-    </div>
-    </div>
+    <%= render "shared/navbar" %>
 
     <%= render "shared/flashes" %>
 
     <%= yield %>
 
-    <div class="footer">
-      <div class="footer-links">
-        <a href="https://github.com/lewagon"><i class="fab fa-github"></i></a>
-        <a href="https://www.instagram.com/lewagongermany/"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/lewagongermany/"><i class="fab fa-facebook"></i></a>
-        <a href="https://de.linkedin.com/showcase/le-wagon-germany/"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div class="footer-copyright">
-        <i class="fa-regular fa-copyright" style="color: #F9E3E4;"></i> <strong>2023 |</strong>
-        <img id="footer-logo" alt="krenty" width="70" src="/assets/krenty-logo-zugeschnitten-rosa.png">
-      </div>
-    </div>
+    <%= render "shared/footer" %>
 
   </body>
 </html>

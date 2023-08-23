@@ -1,0 +1,48 @@
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+      <%= image_tag "krenty-logo-zugeschnitten-rosa.png", alt: "krenty", width: 200 %>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+         <% if user_signed_in? %>
+            <li class="nav-item-search">
+              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </li>
+            <li class="nav-item-buggy">
+              <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
+            </li>
+            <li class="nav-item-heart">
+              <a class="nav-link" href="#"><i class="nav-dropdown-heart fa-solid fa-heart"></i></a>
+            </li>
+            <li class="nav-item dropdown">
+              <div class="d-flex full-width align-items-center dropdown-toggle" id="navbarDropdown" aria-haspopup="true" aria-expanded="false" data-bs-toggle="dropdown">
+                <% if current_user.photo.attached? %>
+                  <img class="avatar" src="<%= cl_image_path current_user.photo.key%>">
+                <% else %>
+                  <img class="rounded-circle mr-3" style="width:90px; height:90px;" src="/app/assets/images/default_user_profile_pic.jpg" alt="default profile picture user">                 
+                <% end %>
+              </div>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/products"><i class="fa-solid fa-baby-carriage"></i> My products</a>
+                <a class="dropdown-item" href="#"><i class="fa-solid fa-heart"></i> My favorites</a>
+                <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user"></i> My profile</a>
+                <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket"></i>  Logout</a>
+              </div>
+            </li>
+          <% else %>
+            <li class="nav-item-search">
+              <a class="nav-link" href="#"><i class="fa-solid fa-magnifying-glass"></i></a>
+            </li>
+            <li><%= link_to "Login", new_user_session_path, class: "btn-pink-login" %></li>
+          <% end %>
+            <!--li class="nav-item"-->
+            <!--/li-->
+        </ul>
+      </div>
+    </div>
+    </div>
