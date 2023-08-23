@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    # A user can only a edit product if he/she is the creator
+    # A user can only edit a product if he/she is the creator
     render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
   end
 
@@ -39,6 +39,8 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    # A user can only destroy a product if he/she is the creator
+    render file: 'public/401.html', status: :unauthorized unless @product.user == current_user
   end
 
   private
