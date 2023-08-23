@@ -42,8 +42,13 @@ class ProductsController < ApplicationController
   end
 
   def my_products
-    render file: 'public/401.html', status: :unauthorized unless current_user
-    @products = current_user.products
+    if !current_user
+      # Render 401 if user is not logged_in
+      render file: 'public/401.html', status: :unauthorized unless current_user
+    else
+      # Else show all products of the current user
+      @products = current_user.products
+    end
   end
 
   def destroy
