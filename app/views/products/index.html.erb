@@ -18,22 +18,34 @@
   <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
     <% @products.each do |product| %>
       <div class="col">
-        <div class="card">
-          <div class="card-img-top">
-            <% product.photos.each do |photo| %>
-              <img src="<%= photo.url %>" class="card-img">
-              <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i>  <!-- If we decide to make a bookmark on click, will be used this '<i class="fa-solid fa-heart"></i>' -->
-            <% end %>
+        <a href="<%= product_path(product[:id]) %>">
+          <div class="card">
+            <div class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <% product.photos.each_with_index do |photo, index| %>
+                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                    <img src="<%= photo.url %>" class="card-img">
+                    <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i>
+                  </div>
+                <% end %>
+              </div>
+              <a class="carousel-control-prev" href="#carousel<%= product.id %>" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carousel<%= product.id %>" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </a>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title"><%= product.name %></h2>
+              <p class="card-text"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
+              <h2 class="card-trip-pricing"><%= product.price %>€</h2>
+            </div>
           </div>
-          <div class="card-body mb-2">
-            <h2 class="card-title mb-2"><%= product.name %></h2>
-            <p class="card-text mb-2"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
-            <h2 class="card-trip-pricing mb-2"><%= product.price %>€</h2>
-          </div>
-        </div>
+        </a>
       </div>
     <% end %>
   </div>
 </div>
-
-<%# <%= cl_image_tag photo.key, class: ' card-img' %> %>
