@@ -16,7 +16,15 @@ class PurchasesController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
     # define
+
+    @purchase = Purchase.find(params[:id])
+    if !current_user
+      render file: 'public/401.html', status: :unauthorized
+      return
+    end
+    @purchase.destroy
+    redirect_to purchases_path
   end
 end
