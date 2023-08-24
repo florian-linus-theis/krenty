@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center">
+  <div class="card-basket">
+    <h1 class="text-center mb-3">My Basket</h1>
+      <div class="center-items">
+        <% @purchases.each_with_index do |purchase, index| %>
+          <div class="d-flex justify-content-space-around">
+          <p class="ps-3 mb-3 p-price"><%= index+1 %>. <%= purchase.product.name %>  </p>
+          <p class="ps-3 mb-3 p-price"><%= purchase.product.price %> €</p>
+          </div>
+        <% end %>
+      </div>
+    <h2 class="card-price ">My Total = 500€ </h2>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Buy now!
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you for your purchase!</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <h2>You successfully bought your basket for ...€</h2>
+              <h3>They are on your way to you!</h3>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary">Finish</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+</div>
