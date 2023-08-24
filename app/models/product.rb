@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many_attached :photos
   validates :price, presence: true
   validates :description, presence: true
