@@ -29,11 +29,14 @@
           <div class="card">
             <div class="carousel slide" id="carousel<%= product.id %>">
               <div class="carousel-inner">
-                <% product.photos.each_with_index do |photo, index| %>
-                  <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                    <img src="<%= photo.url %>" class="card-img">
-                    <%# <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i> %>
-                  </div>
+                <% if product.photos.empty? %>
+                  <%= image_tag "Image_not_available.png", class: "card-img" %>
+                <% else %>
+                  <% product.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                      <img src="<%= photo.url %>" class="card-img">
+                    </div>
+                  <% end %>
                 <% end %>
               </div>
               <a class="carousel-control-prev" href="#carousel<%= product.id %>" role="button" data-bs-slide="prev">
