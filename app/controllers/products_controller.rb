@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
 
     # Normal Crud Action
     if @product.update(product_params)
-      redirect_to product_path(@product), notice: 'Removed product from favorites list!'
+      redirect_to product_path(@product), notice: 'Updated the product details!'
     else
       render :edit, status: :unprocessable_entity
     end
