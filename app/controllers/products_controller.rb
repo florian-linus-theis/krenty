@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    per_page = 9
     if params[:query].present?
       sql_subquery = <<~SQL
       products.name ILIKE :query
@@ -15,12 +14,13 @@ class ProductsController < ApplicationController
       @products = Product.all
     end
     
+    # For bootstrap layout 
+    per_page = 9
     total_products = @products.count
     @total_pages = (total_products.to_f / per_page).ceil
     @current_page = params[:page].to_i
     @current_page = 1 if @current_page <= 0
     @current_page = @total_pages if @current_page > @total_pages
-
     offset = (per_page * (@current_page - 1)).clamp(0, total_products)
     @products = @products.limit(per_page).offset(offset)
   end

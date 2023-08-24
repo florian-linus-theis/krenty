@@ -1,0 +1,28 @@
+<div class="container my-5">
+  <h1 class="my-3">My Bookmarks</h1>
+  <% if current_user && @bookmarks.empty?%>
+    <h2 class="my-4">Seems like you have no bookmarks yet!</h2>
+    <%= link_to "Bookmark some products!", products_path, class: "btn-pink" %>
+  <% elsif current_user && @bookmarks %>
+      <div class="row row-cols-2 m-4">
+        <% @bookmarks.each do |bookmark| %>
+          <div class="col">
+              <div class="card-show ">
+                <%= cl_image_tag bookmark.product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
+                <div class="card-body">
+                  <h5 class="card-title"><%= bookmark.product.name %></h5>
+                  <p class="card-text"><%= bookmark.product.description %></p>
+                  <p class="card-text"><small class="text-muted"><%= bookmark.product.category %></small></p>
+                  <p class="card-text"><small class="pink-p"><%= bookmark.product.price %></small></p>
+                  <p class="card-text"><%= link_to "Remove this bookmark", bookmark_path(bookmark), class: "btn-pink", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+                </div>
+              </div>
+            </div>
+        <% end %>
+      </div>
+  <% else %>
+    <h2>You are not logged in. Please log in or register to see and create your own products!</h2>
+    <%= link_to "Registration", new_user_session_path, class: "btn-pink" %>
+    <%= link_to "Login", new_product_path, class: "astext" %>
+  <% end %>
+</div>
