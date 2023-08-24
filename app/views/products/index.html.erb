@@ -25,7 +25,7 @@
                 <% product.photos.each_with_index do |photo, index| %>
                   <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
                     <img src="<%= photo.url %>" class="card-img">
-                    <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i>
+                    <%# <i class="fa-regular fa-heart position-absolute top-0 end-0 mt-2 me-2"></i> %>
                   </div>
                 <% end %>
               </div>
@@ -42,6 +42,19 @@
               <h2 class="card-title"><%= product.name %></h2>
               <p class="card-text"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
               <h2 class="card-trip-pricing"><%= product.price %>€</h2>
+              <% bookmark = Bookmark.where(product_id: product.id, user_id: current_user.id)[0] %>
+              <% if bookmark.nil? %>
+                <%= form_for @bookmark do |f| %>
+                  <%= f.hidden_field :product, value: product.id %>
+                  <%= button_tag( :class => "astext") do %>
+                    <p class="card-trip-pricing pink-p"><i class="fa-regular fa-heart mt-2 me-2" style="font-size: 20px"></i></p>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete} do %>
+                  <p class="card-trip-pricing pink-p"><i class="fa-solid fa-heart mt-2 me-2" style="font-size: 20px"></i></p>
+                <% end %>
+              <% end %>
             </div>
           </div>
         </a>
@@ -61,4 +74,3 @@
     });
   });
 </script>
-

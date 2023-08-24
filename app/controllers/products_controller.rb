@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
+    # Instantiate all products and an empty bookmark for form
     @products = Product.all
+    @bookmark = Bookmark.new
+
+    # If no query present just return all products, otherwise search for products Name/description/category and username
     return unless params[:query].present?
 
     sql_subquery = <<~SQL
