@@ -36,6 +36,13 @@
       </div>
 
       <div class="row">
+        <%= f.input :address,
+                    hint: "leave it blank if you don't want to add an address",
+                    autofocus: true,
+                    input_html: { autocomplete: "address" } %>
+      </div>
+
+      <div class="row">
         <div class="col">
         <%= f.input :password,
                     hint: "leave it blank if you don't want to change it",
