@@ -1,1 +1,81 @@
-<h1><%= current_user.first_name %> <%= current_user.last_name %></h1>
+<div class="container  my-3">
+  <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumb-item"><%= link_to "My profile", profile_path %></li>
+    </ol>
+  </nav>
+</div>
+
+<div class="container my-5">
+    <h1 class="my-3">My profile</h1>
+    <div class="content d-flex ">
+        <div class="d-flex full-width align-items-center" aria-haspopup="true" aria-expanded="false">
+            <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: "rounded-circle mr-3", :gravity=>"face", :height=>150, :width=>150, :crop=>"thumb" %>
+            <% else %>
+                <%= image_tag "default_user_profile_pic.jpg", alt: "default image", width: 150, height: 150, class: "rounded-circle mr-3" %>
+            <% end %>
+        </div>
+        <div class="user-info">
+            <ul class="headline">
+                <li class="input"><strong>Username:</strong></li>
+            </ul>
+            <ul class="headline">
+                <li class="input"><strong>First name:</strong></li>
+            </ul>
+            <ul class="headline">
+                <li class="input"><strong>Last name:</strong></li>
+            </ul>
+        </div>
+        <div class="user-info">
+            <ul class="headline">
+                <li class="input">
+                <%= current_user.username.titleize %>
+                </li>
+            </ul>
+            <ul class="headline">
+                <li class="input">
+                <%= current_user.first_name.titleize %></li>
+            </ul>
+            <ul class="headline">
+                <li class="input">
+                <%= current_user.last_name.titleize %></li>
+            </ul>
+        </div>
+        <div class="user-info-right-left">
+            <ul class="headline">
+                <li class="input"><strong>Email:</strong></li>
+            </ul>
+            <ul class="headline">
+                <li class="input"><strong>Address:</strong></li>
+            </ul>
+            <ul class="headline">
+                <li class="input"><strong>Password:</strong></li>
+            </ul>
+        </div>
+        <div class="user-info-right-right">
+         <ul class="headline">
+                <li class="input">
+                <%= current_user.email %>
+                </li>
+            </ul>
+            <ul class="headline">
+                <li class="input">
+                    <%if current_user.address.blank?%>
+                        <p>-</p>
+                    <%else%>
+                        <%= current_user.address.titleize %>
+                    <%end%>
+                </li>
+            </ul>
+            <ul class="headline">
+                <li class="input">
+                ******</li>
+            </ul>
+        </div>
+    </div>
+    <div class="button-edit">
+       <%= link_to "Edit profile", edit_user_registration_path, class: "btn-pink" %>
+    </div>
+</div>

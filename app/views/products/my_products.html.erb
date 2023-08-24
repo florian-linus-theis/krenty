@@ -13,7 +13,13 @@
               <div class="card-show d-flex">
                 <a class="link", href="<%= product_path(product[:id]) %>">
                 <div>
-                  <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
+                  <% if product.photos.empty? %>
+                    <div class="default-image-container m-3">
+                      <%= image_tag "Image_not_available.png", class: "default-image", width: 180 %>
+                    </div>
+                  <% else %>
+                    <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3" %>
+                  <% end %>
                 </div>
                   <div class="card-body">
                     <h5 class="card-title"><%= product.name %></h5>
@@ -34,6 +40,6 @@
   <% else %>
     <h2>You are not logged in. Please log in or register to see and create your own products!</h2>
     <%= link_to "Registration", new_user_session_path, class: "btn-pink" %>
-    <%= link_to "Login", new_product_path, class: "btn-rosa" %>
+    <%= link_to "Login", new_product_path, class: "astext" %>
   <% end %>
 </div>

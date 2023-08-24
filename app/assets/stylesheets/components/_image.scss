@@ -1,0 +1,11 @@
+.default-image {
+  object-fit: cover;
+}
+
+.default-image-container {
+  height: 250px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
