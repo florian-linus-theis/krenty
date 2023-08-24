@@ -4,6 +4,9 @@
     <h2 class="my-4">Seems like you have no products yet...</h2>
     <%= link_to "Sell product now!", new_product_path, class: "btn-pink" %>
   <% elsif current_user && @products %>
+    <div class="d-flex justify-content-center">
+      <%= link_to "Sell another product!", new_product_path, class: "btn-pink justify-content-center" %>
+    </div>
       <div class="row m-4">
         <% @products.each do |product| %>
           <div class="col-12 col-lg-6 mb-3">
