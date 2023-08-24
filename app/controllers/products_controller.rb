@@ -74,6 +74,7 @@ class ProductsController < ApplicationController
     # Cloudinary::Uploader.destroy(public_key)
 
     # Normal crud action
+
     @product.update(product_params)
     redirect_to product_path(@product)
   end
