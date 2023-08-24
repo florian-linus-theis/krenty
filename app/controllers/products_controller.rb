@@ -3,11 +3,18 @@ class ProductsController < ApplicationController
 
   def index
     per_page = 9
-
-    @products = Product.all
-
-    @products = Product.where('name LIKE ?', "%#{params[:query]}%") if params[:query].present?
-
+    if params[:query].present?
+      sql_subquery = <<~SQL
+      products.name ILIKE :query
+      OR products.description ILIKE :query
+      OR products.category ILIKE :query
+      OR users.username ILIKE :query
+      SQL
+      @products = @products.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
+    else 
+      @products = Product.all
+    end
+    
     total_products = @products.count
     @total_pages = (total_products.to_f / per_page).ceil
     @current_page = params[:page].to_i
