@@ -1,21 +1,29 @@
 <div class="container my-5">
-  <h1 class="my-3">My Products</h1>
+  <h1 class="my-3 text-center">My Products</h1>
   <% if current_user && @products.empty?%>
     <h2 class="my-4">Seems like you have no products yet!</h2>
     <%= link_to "Create your first product!", new_product_path, class: "btn-pink" %>
   <% elsif current_user && @products %>
-      <div class="row row-cols-2 m-4">
+      <div class="row m-4">
         <% @products.each do |product| %>
-          <div class="col">
-              <div class="card-show ">
-                <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
-                <div class="card-body">
-                  <h5 class="card-title"><%= product.name %></h5>
-                  <p class="card-text"><%= product.description %></p>
-                  <p class="card-text"><small class="text-muted"><%= product.category %></small></p>
-                  <p class="card-text"><small class="pink-p"><%= product.price %></small></p>
-                  <p class="card-text"><%= link_to "Remove this product", product_path(product), class: "btn-pink", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></p>
+          <div class="col-12 col-lg-6 mb-3">
+              <div class="card-show d-flex">
+                <a class="link", href="<%= product_path(product[:id]) %>">
+                <div>
+                  <%= cl_image_tag product.photos.first.key, height: 250, width: 180, crop: :fill, class: "m-3"%>
                 </div>
+                  <div class="card-body">
+                    <h5 class="card-title"><%= product.name %></h5>
+                    <p class="card-text"><%= product.description %></p>
+                    <p class="card-text"><small class="text-muted"><%= product.category %></small></p>
+                    <p class="card-text mb-3"><small class="pink-p-2"><%= product.price %> €</small></p>
+                      <%= link_to product_path(product), class: "btn-pink", data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+                        <i class="fa-solid fa-trash-can" style="color: $off-white;"></i>
+                      <% end %>
+                      <%= link_to edit_product_path(product), class: "btn-pink ms-3" do %>
+                        <i class="fa-solid fa-pen" style="color: $off-white;"></i>
+                      <% end %>
+                  </div>
               </div>
             </div>
         <% end %>
