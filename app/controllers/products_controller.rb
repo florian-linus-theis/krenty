@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
+    @bookmark = Bookmark.new
     if params[:query].present?
       sql_subquery = <<~SQL
       products.name ILIKE :query
@@ -10,11 +11,11 @@ class ProductsController < ApplicationController
       OR users.username ILIKE :query
       SQL
       @products = @products.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
-    else 
+    else
       @products = Product.all
     end
-    
-    # For bootstrap layout 
+
+    # For bootstrap layout
     per_page = 9
     total_products = @products.count
     @total_pages = (total_products.to_f / per_page).ceil
