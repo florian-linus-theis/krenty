@@ -1,8 +1,8 @@
 <div class="container my-5">
   <h1 class="my-3">My Products</h1>
   <% if current_user && @products.empty?%>
-    <h2 class="my-4">Seems like you have no products yet!</h2>
-    <%= link_to "Create your first product!", new_product_path, class: "btn-pink" %>
+    <h2 class="my-4">Seems like you have no products yet...</h2>
+    <%= link_to "Sell product now!", new_product_path, class: "btn-pink" %>
   <% elsif current_user && @products %>
       <div class="row row-cols-2 m-4">
         <% @products.each do |product| %>
