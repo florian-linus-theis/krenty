@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Using Devise for users
-  devise_for :users
+  # Using Devise
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   get '/profile', to: 'pages#profile', as: :profile
 
   # Root
