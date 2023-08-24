@@ -1,11 +1,11 @@
 <div class="container my-5">
   <h1 class="my-3 text-center">My Favorites</h1>
   <% if current_user && @bookmarks.empty?%>
-    <h2 class="my-4">Seems like you have no bookmarks yet...</h2>
+    <h2 class="my-4">Seems like you have no favorites yet...</h2>
     <%= link_to "Bookmark your first product!", products_path, class: "btn-pink" %>
   <% elsif current_user && @bookmarks %>
     <div class="d-flex justify-content-center">
-      <%= link_to "Bookmark more products!", products_path, class: "btn-pink justify-content-center" %>
+      <%= link_to "Add more favorites", products_path, class: "btn-pink justify-content-center" %>
     </div>
       <div class="row m-4">
         <% @bookmarks.each do |bookmark| %>
@@ -20,7 +20,7 @@
                     <p class="card-text"><%= bookmark.product.description %></p>
                     <p class="card-text"><small class="text-muted"><%= bookmark.product.category %></small></p>
                     <p class="card-text mb-3"><small class="pink-p-2"><%= bookmark.product.price %> €</small></p>
-                    <%= link_to bookmark_path(bookmark), class: "btn-pink", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this bookmark?"} do %>
+                    <%= link_to bookmark_path(bookmark), class: "btn-pink", data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this product from your favorites list?"} do %>
                       <i class="fa-solid fa-x" style="color: $off-white;"></i>
                     <% end %>
                   </div>
@@ -29,7 +29,7 @@
         <% end %>
       </div>
   <% else %>
-    <h2>You are not logged in. Please log in or register to see and create your own products!</h2>
+    <h2>You are not logged in. Please log in or register to see and sell your own products!</h2>
     <%= link_to "Registration", new_user_session_path, class: "btn-pink" %>
     <%= link_to "Login", new_product_path, class: "astext" %>
   <% end %>
