@@ -49,18 +49,20 @@
               <h2 class="card-title title-ellipsis"><%= product.name %></h2>
               <p class="card-text"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
               <h2 class="card-trip-pricing"><%= product.price %>€</h2>
+              <% if current_user %>
               <% bookmark = Bookmark.where(product_id: product.id, user_id: current_user.id)[0] %>
-              <% if bookmark.nil? %>
-                <%= form_for @bookmark do |f| %>
-                  <%= f.hidden_field :product, value: product.id %>
-                  <%= button_tag( :class => "astext") do %>
-                    <p class="btn-pink mt-2 me-2"><i class="fa-regular fa-heart" style="font-size: 20px"></i></p>
+                <% if bookmark.nil? %>
+                  <%= form_for @bookmark do |f| %>
+                    <%= f.hidden_field :product, value: product.id %>
+                    <%= button_tag( :class => "astext") do %>
+                      <p class="btn-pink mt-2 me-2"><i class="fa-regular fa-heart" style="font-size: 20px"></i></p>
+                    <% end %>
                   <% end %>
-                <% end %>
-              <% else %>
-                <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete} do %>
-                  <%= button_tag( :class => "astext") do %>
-                      <p class="btn-pink mt-2 me-2"><i class="fa-solid fa-heart" style="font-size: 20px"></i></p>
+                <% else %>
+                  <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete} do %>
+                    <%= button_tag( :class => "astext") do %>
+                        <p class="btn-pink mt-2 me-2"><i class="fa-solid fa-heart" style="font-size: 20px"></i></p>
+                    <% end %>
                   <% end %>
                 <% end %>
               <% end %>
