@@ -52,9 +52,30 @@ class ProductsController < ApplicationController
   def update
     # Cloudinary::Uploader.destroy("development/#{current_user.photo.key}")
     # Deleting all previous photos stored in the cloud
-    @product.photos.each(&:purge) if @product.photos.attached?
+
+    # # store original keys
+    # original_keys = @product.photos.map(&:key)
+
+    # # Update Product
+    # @product.update(product_params)
+
+    # # Already redirect
+    # redirect_to product_path(@product)
+
+    # # Return if original keys are empty
+    # return unless original_keys.empty?
+
+    # # if new keys
+    # new_keys = @product.photos.map(&:key)
+    # return unless (original_keys - new_keys).empty?
+
+    # # Check if in production or development environment and generate public key based on that
+    # public_key = Rails.env.production? ? "development/#{original_key}" : "production/#{original_key}"
+    # # remove original key picture
+    # Cloudinary::Uploader.destroy(public_key)
 
     # Normal crud action
+
     @product.update(product_params)
     redirect_to product_path(@product)
   end
