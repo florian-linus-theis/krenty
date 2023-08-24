@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   get '/my-products', to: 'products#my_products'
 
   # Bookmark routes
-  resources :bookmarks, only: %i[index create destroy]
+  resources :bookmarks, only: %i[create destroy]
+  get '/my-favorites', to: 'bookmarks#index'
 end
