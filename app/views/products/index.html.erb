@@ -1,21 +1,28 @@
-<h1 class="text-center mt-5 mb-4">Products</h1>
+<h1 class="text-center mt-5 mb-2">Market Place</h1>
+<h6 class="text-center mb-5">Find out the right goodies for you!</h6>
 
 <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-end m-4">
-    <li class="page-item disabled">
-      <a class="page-link">Previous</a>
+  <ul class="pagination justify-content-end m-4" id="pagination">
+    <li class="page-item <%= @current_page == 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="<%= products_path(page: @current_page - 1) %>">Previous</a>
     </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
+    <% (1..@total_pages).each do |page| %>
+      <% if (page - @current_page).abs <= 1 %>
+        <li class="page-item <%= page == @current_page ? 'active' : '' %>">
+          <a class="page-link" href="<%= products_path(page: page) %>"><%= page %></a>
+        </li>
+      <% end %>
+    <% end %>
+    <li class="page-item <%= @current_page == @total_pages ? 'disabled' : '' %>">
+      <a class="page-link" href="<%= products_path(page: @current_page + 1) %>">Next</a>
     </li>
   </ul>
 </nav>
 
+
+
 <div class="card-trip m-4">
-  <div class="row row-cols-3 row-cols-lg-5 g-2 g-lg-3">
+  <div class="row row-cols-3 g-2" id="product-container">
     <% @products.each do |product| %>
       <div class="col">
         <a href="<%= product_path(product[:id]) %>">
@@ -30,16 +37,16 @@
                 <% end %>
               </div>
               <a class="carousel-control-prev" href="#carousel<%= product.id %>" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon arrow1" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
               </a>
               <a class="carousel-control-next" href="#carousel<%= product.id %>" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon arrow1" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
               </a>
             </div>
             <div class="card-body">
-              <h2 class="card-title"><%= product.name %></h2>
+              <h2 class="card-title title-ellipsis"><%= product.name %></h2>
               <p class="card-text"><%= truncate(product.description, length: 30, omission: "...", escape: false) %></p>
               <h2 class="card-trip-pricing"><%= product.price %>€</h2>
               <% bookmark = Bookmark.where(product_id: product.id, user_id: current_user.id)[0] %>
@@ -62,6 +69,8 @@
     <% end %>
   </div>
 </div>
+
+<%# JavaScript for carousel & pagination%>
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
