@@ -22,13 +22,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    first_key = current_user.photo.key
+    original_key = current_user.photo.key
     super
-    return unless first_key
+    return unless original_key
 
-    second_key = current_user.photo.key
-    # remove first key picture if first_key != second_key
-    Cloudinary::Uploader.destroy("development/#{first_key}") if first_key != second_key
+    new_key = current_user.photo.key
+    return unless original_key != new_key
+
+    # Check if in production or development environment and generate public key based on that
+    public_key = Rails.env.production? ? "development/#{original_key}" : "production/#{original_key}"
+    # remove original key picture
+    Cloudinary::Uploader.destroy(public_key)
   end
 
   # DELETE /resource
