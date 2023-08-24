@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @bookmark = Bookmark.new
+    @products = Product.all
     if params[:query].present?
       sql_subquery = <<~SQL
       products.name ILIKE :query
@@ -11,8 +12,6 @@ class ProductsController < ApplicationController
       OR users.username ILIKE :query
       SQL
       @products = @products.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
-    else
-      @products = Product.all
     end
 
     # For bootstrap layout
