@@ -3,9 +3,15 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
-    return unless params[:query]
+    return unless params[:query].present?
 
-    @products = Product.where('name LIKE ?', "%#{params[:query]}%")
+    sql_subquery = <<~SQL
+      products.name ILIKE :query
+      OR products.description ILIKE :query
+      OR products.category ILIKE :query
+      OR users.username ILIKE :query
+    SQL
+    @products = @products.joins(:user).where(sql_subquery, query: "%#{params[:query]}%")
   end
 
   def show
