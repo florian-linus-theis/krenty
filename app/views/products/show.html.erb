@@ -45,7 +45,9 @@
             </div>
           <p><%= @product.description %></p>
         <p class="pink-p"><%= @product.price %> €</p>
-        <%= link_to "Add to basket", new_user_registration_path, :class => "btn-pink" %>
+          <%= simple_form_for [@product, @purchase] do |f| %>
+            <%= f.submit "Add to Basket", class: "btn-pink" %>
+          <% end %>
       </div>
   </div>
 </div>

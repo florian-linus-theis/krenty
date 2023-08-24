@@ -1,0 +1,26 @@
+.card-basket{
+  height:auto;
+  width:auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  padding: 8px;
+  margin: 12px;
+  width: 60%;
+}
+
+
+.card-price{
+  background-color: $rosa;
+  padding: 8px;
+  border-radius: 8px;
+  margin: 12px;
+}
+
+
+.p-price {
+  font-size: 20px;
+}
+
+.center-items {
+  margin-left: auto;
+}
