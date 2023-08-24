@@ -2,10 +2,20 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    @products = Product.all
-    return unless params[:query]
+    per_page = 9
 
-    @products = Product.where('name LIKE ?', "%#{params[:query]}%")
+    @products = Product.all
+
+    @products = Product.where('name LIKE ?', "%#{params[:query]}%") if params[:query].present?
+
+    total_products = @products.count
+    @total_pages = (total_products.to_f / per_page).ceil
+    @current_page = params[:page].to_i
+    @current_page = 1 if @current_page <= 0
+    @current_page = @total_pages if @current_page > @total_pages
+
+    offset = (per_page * (@current_page - 1)).clamp(0, total_products)
+    @products = @products.limit(per_page).offset(offset)
   end
 
   def show
