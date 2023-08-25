@@ -36,14 +36,16 @@
           <div class="card">
             <div class="carousel slide" id="carousel<%= product.id %>">
               <div class="carousel-inner">
-                <% if product.photos.empty? %>
-                  <%= image_tag "Image_not_available.png", class: "card-img" %>
+                <% if product.purchased == true %>
+                      <%= image_tag(("Sold"), :class => "card-img")%>
+                <% elsif product.photos.empty? %>
+                    <%= image_tag "Image_not_available.png", class: "card-img" %>
                 <% else %>
-                  <% product.photos.each_with_index do |photo, index| %>
-                    <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
-                      <img src="<%= photo.url %>" class="card-img">
-                    </div>
-                  <% end %>
+                    <% product.photos.each_with_index do |photo, index| %>
+                      <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                        <img src="<%= photo.url %>" class="card-img">
+                      </div>
+                    <% end %>
                 <% end %>
               </div>
               <a class="carousel-control-prev" href="#carousel<%= product.id %>" role="button" data-bs-slide="prev">
