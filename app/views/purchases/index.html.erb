@@ -6,7 +6,6 @@
   <% elsif current_user && @purchases %>
     <div class="container d-flex justify-content-center">
       <div class="card-basket">
-        <h1 class="text-center mb-3">My Shopping Cart</h1>
           <div class="center-items">
           <% sum = 0 %>
             <% @purchases.each_with_index do |purchase, index| %>
