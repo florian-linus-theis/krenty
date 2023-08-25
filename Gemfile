@@ -66,6 +66,9 @@ gem "cloudinary"
 # Using Faker Gem
 gem 'faker'
 
+#Using Geocoder
+gem "geocoder"
+
 # Installing Auto-pre-fixer
 gem "autoprefixer-rails"
 
