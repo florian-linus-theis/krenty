@@ -26,4 +26,14 @@ class PurchasesController < ApplicationController
     @purchase.destroy
     redirect_to purchases_path
   end
+
+  def destroy_all_purchases
+    @purchases = Purchase.where(user_id: current_user.id)
+    @purchases.each do |purchase|
+      purchase.product.update(purchased: true)
+      # purchase.save!
+    end
+    @purchases.destroy_all
+    redirect_to purchases_path, status: :see_other
+  end
 end
