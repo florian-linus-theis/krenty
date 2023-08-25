@@ -12,7 +12,7 @@
             <div class="carousel-inner">
               <% if @product.purchased == true %>
                   <div class="carousel-item active ">
-                    <%= image_tag(("Sold"), :class => "image-big d-block mx-auto")%>
+                    <%= image_tag "Sold.jpg", :class => "image-big d-block mx-auto")%>
                   </div>
               <% else %>
                   <% @product.photos.each_with_index do |photo, index| %>
