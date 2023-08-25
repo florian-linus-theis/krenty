@@ -41,7 +41,7 @@
               <div class="carousel slide" id="carousel<%= product.id %>">
                 <div class="carousel-inner">
                   <% if product.purchased == true %>
-                        <%= image_tag "Sold.jpg", :class => "card-img")%>
+                        <%= image_tag "Sold.jpg", :class => "card-img"%>
                   <% elsif product.photos.empty? %>
                       <%= image_tag "Image_not_available.png", class: "card-img" %>
                   <% else %>
