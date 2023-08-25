@@ -69,16 +69,8 @@
   padding: 16px;
 }
 
-.card-img-top {
-  position: relative;
-
-  .fa-regular.fa-heart {
-    color: $lila;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0.5rem;
-  }
+.far, .fas{
+  color: $pink;
 }
 
 .title-ellipsis {
