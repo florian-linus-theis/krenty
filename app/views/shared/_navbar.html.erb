@@ -18,7 +18,13 @@
               <a class="nav-link nav-item-search" data-action="click->searchbar#toggle" data-searchbar-target="originalLink"><i class="fa-solid fa-magnifying-glass"></i></a>
             </li>
             <li class="nav-item-buggy">
-              <a class="nav-link" href="/products"><i class="fa-solid fa-baby-carriage"></i></a>
+              <a class="nav-link" href="/products"><i class="fa-solid fa-baby"></i></a>
+            </li>
+            <li class="nav-item-buggy">
+              <a class="nav-link" href="/my-products"><i class="fa-solid fa-tags"></i></a>
+            </li>
+            <li class="nav-item-cart">
+              <a class="nav-link" href="/purchases"><i class="fa-solid fa-baby-carriage"></i></a>
             </li>
             <li class="nav-item-heart">
               <a class="nav-link" href="/my-favorites"><i class="nav-dropdown-heart fa-solid fa-heart"></i></a>
@@ -32,7 +38,8 @@
                 <% end %>
               </div>
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/my-products"><i class="fa-solid fa-baby-carriage"></i> My products</a>
+                <a class="dropdown-item" href="/my-products"><i class="fa-solid fa-tags"></i> My products</a>
+                <a class="dropdown-item" href="/purchases"><i class="fa-solid fa-baby-carriage"></i> My Shopping Cart</a>
                 <a class="dropdown-item" href="/my-favorites"><i class="fa-solid fa-heart"></i> My favorites</a>
                 <a class="dropdown-item" href="/profile"><i class="fa-solid fa-user"></i> My profile</a>
                 <a class="dropdown-item" data-turbo-method="delete" href="/users/sign_out"><i class="fa-solid fa-right-from-bracket"></i>  Logout</a>
