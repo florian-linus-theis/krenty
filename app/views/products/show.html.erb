@@ -10,16 +10,22 @@
       <div class="col-md-5 m-3">
           <div id="carouselExample" class="carousel slide">
             <div class="carousel-inner">
-              <% @product.photos.each_with_index do |photo, index| %>
-                <% if index == 0 %>
+              <% if @product.purchased == true %>
                   <div class="carousel-item active ">
-                    <%= cl_image_tag photo.key, height: 400, width: 300, crop: :fill, class: "image-big d-block mx-auto" %>
+                    <%= image_tag(("Sold"), :class => "image-big d-block mx-auto")%>
                   </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= cl_image_tag photo.key, height: 400, width: 300, crop: :fill, class: "image-big d-block mx-auto" %>
-                  </div>
-                <% end%>
+              <% else %>
+                  <% @product.photos.each_with_index do |photo, index| %>
+                    <% if index == 0 %>
+                      <div class="carousel-item active ">
+                        <%= cl_image_tag photo.key, height: 400, width: 300, crop: :fill, class: "image-big d-block mx-auto" %>
+                      </div>
+                    <% else %>
+                      <div class="carousel-item">
+                        <%= cl_image_tag photo.key, height: 400, width: 300, crop: :fill, class: "image-big d-block mx-auto" %>
+                      </div>
+                    <% end%>
+                  <% end %>
               <% end %>
             </div>
            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -45,9 +51,12 @@
             </div>
           <p><%= @product.description %></p>
         <p class="pink-p"><%= @product.price %> €</p>
+
+        <% if @product.purchased == false %>
           <%= simple_form_for [@product, @purchase] do |f| %>
             <%= f.submit "Add to Basket", class: "btn-pink" %>
           <% end %>
+        <% end %>
       </div>
   </div>
 </div>

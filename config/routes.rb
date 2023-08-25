@@ -16,6 +16,7 @@ Rails.application.routes.draw do
    resources :purchases, only: [:create]
   end
   resources :purchases, only: [:index, :destroy]
+  delete '/empty-basket', to: 'purchases#destroy_all_purchases', as: :destroy_all_purchases
 
   # Bookmark routes
   resources :bookmarks, only: %i[create destroy]
