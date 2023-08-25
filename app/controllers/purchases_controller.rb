@@ -18,7 +18,6 @@ class PurchasesController < ApplicationController
 
   def destroy
     # define
-
     @purchase = Purchase.find(params[:id])
     if !current_user
       render file: 'public/401.html', status: :unauthorized

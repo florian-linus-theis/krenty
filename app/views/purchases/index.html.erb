@@ -1,43 +1,59 @@
 <div class="container d-flex justify-content-center">
-  <div class="card-basket">
-    <h1 class="text-center mb-3">My Basket</h1>
-      <div class="center-items">
-      <% sum = 0 %>
-        <% @purchases.each_with_index do |purchase, index| %>
-          <div class="d-flex justify-content-space-around">
-            <p class="ps-3 mb-3 p-price"><%= index+1 %>. <%= purchase.product.name %>  </p>
-            <p class="ps-3 mb-3 p-price"><%= purchase.product.price %> €</p>
-            <%= link_to purchase_path(purchase.id), data: { turbo_method: :delete, turbo_confirm: "Remove item from Basket?" } do %>
-              <i class="fa-solid fa-square-minus" style="color: $pink;"></i>
-            <% end %>
-          </div>
-          <% sum += purchase.product.price %>
-        <% end %>
+  <% if current_user && @purchases.empty?%>
+    <div class="p-3 text-center m-3">
+      <h2 >Seems like your shopping cart is empty...</h2>
+      <div class="p-3 text-center " >
+        <%= link_to "Add something to your shopping cart!", products_path, class: "btn-pink m-3" %>
       </div>
-
-    <h2 class="card-price ">My Total = <%= sum %>€ </h2>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Buy now!
-      </button>
-
-      <!-- Modal -->
-      <div class="modal hide fade in" id="exampleModal" data-keyboard="false" data-backdrop="static" >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you for your purchase!</h1>
+    </div>
+  <% elsif current_user && @purchases %>
+    <div class="card-basket">
+      <h1 class="text-center mb-3">My Shopping Cart</h1>
+        <div class="center-items">
+        <% sum = 0 %>
+          <% @purchases.each_with_index do |purchase, index| %>
+            <div class="d-flex justify-content-space-around">
+              <p class="ps-3 mb-3 p-price"><%= index+1 %>. <%= purchase.product.name %>  </p>
+              <p class="ps-3 mb-3 p-price"><%= purchase.product.price %> €</p>
+              <%= link_to purchase_path(purchase.id), data: { turbo_method: :delete, turbo_confirm: "Remove item from Basket?" } do %>
+                <i class="fa-solid fa-square-minus" style="color: $pink;"></i>
+              <% end %>
             </div>
-            <div class="modal-body">
-              <h2>You successfully bought your basket for <b><%= sum %>€<b></h2>
-              <p>Your purchase is on its way to your heaven!</p>
-            </div>
-            <div class="modal-footer">
-              <%= link_to "Shop more!", products_path, class: "btn-pink" %>
+            <% sum += purchase.product.price %>
+          <% end %>
+        </div>
+
+      <h2 class="card-price ">My Total = <%= sum %>€ </h2>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-pink" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Buy now!
+        </button>
+
+        <!-- Modal -->
+        <div class="modal hide fade in" id="exampleModal" data-keyboard="false" data-backdrop="static" >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you for your purchase!</h1>
+              </div>
+              <div class="modal-body">
+                <h2>You successfully bought your basket for <b><%= sum %>€<b></h2>
+                <p>Your purchase is on its way to your heaven!</p>
+              </div>
+              <div class="modal-footer">
+                <%= link_to "Shop more!", products_path, class: "btn-pink" %>
+              </div>
             </div>
           </div>
         </div>
+    </div>
+  <% else %>
+    <div class="p-3 text-center m-3">
+      <h2 >You are not logged in. <br>Please log in or register to see your shopping cart!</h2>
+      <div class="p-3 text-center " >
+        <%= link_to "Registration", new_user_registration_path, class: "btn-pink m-3" %>
+        <%= link_to "Login", new_user_session_path, class: "astext m-3" %>
       </div>
-
-  </div>
+    </div>
+  <% end %>
 </div>
